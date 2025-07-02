@@ -1,0 +1,2591 @@
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\.eslintrc.json
+
+code:
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "react/prop-types": "off",
+    "no-unused-vars": "warn",
+    "no-console": "warn"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\App.jsx
+
+code:
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\index.css
+
+code:
+/* index.css – Global Styles, Color Variables, and Spacing Scale */
+
+/* === Color Variables (Light Theme Default) === */
+:root {
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-background: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-text: #212529;
+  --color-muted: #6c757d;
+}
+
+/* === Dark Theme Overrides === */
+[data-theme="dark"] {
+  --color-background: #121212;
+  --color-surface: #1e1e1e;
+  --color-text: #f5f5f5;
+  --color-muted: #aaaaaa;
+  --color-primary: #4dabf7;
+  --color-secondary: #868e96;
+  --color-success: #51cf66;
+  --color-danger: #ff6b6b;
+}
+
+/* === Typography Scale === */
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Spacing Scale === */
+.spacing-xs { margin: 4px; }
+.spacing-sm { margin: 8px; }
+.spacing-md { margin: 16px; }
+.spacing-lg { margin: 24px; }
+.spacing-xl { margin: 32px; }
+
+/* === Button Styles === */
+.button-primary {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.button-secondary {
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.button-danger {
+  background-color: var(--color-danger);
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  opacity: 0.9;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* === Error States === */
+.error-message {
+  color: var(--color-danger);
+  font-weight: bold;
+}
+
+/* === Loading States === */
+.loading-spinner {
+  border: 4px solid var(--color-surface);
+  border-top: 4px solid var(--color-primary);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  margin: 8px auto;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* === Smooth Section Fade-ins === */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ✅ Global Container Layout */
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ✅ ARIA Live Region (for screen reader announcements) */
+[aria-live] {
+  position: absolute;
+  left: -9999px;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\README.md
+
+code:
+# Networking Assistant – Frontend Module
+
+---
+
+## ✅ Overview
+
+This is the **Frontend-Only implementation** of the **Networking Assistant**, part of your larger 18-part project to build the **Adaptive AI Networking Coach**.
+
+Focus for this phase:  
+✅ Functional React logic  
+✅ Context + State management  
+✅ Frontend-only mocks (no backend, no LLM calls yet)  
+✅ No production styling yet (UI polish comes later when integrated)
+
+---
+
+## ✅ Folder Structure
+
+Student Lifecycle - Networking Assistant/
+├── App.jsx
+├── index.css
+├── README.md
+├── components/
+│ └── NetworkAssistant/
+│ ├── AIMessageToneSelector.jsx
+│ ├── AIOutreachWizard.jsx
+│ ├── CampaignOutreachWizard.jsx
+│ ├── ContactCard.jsx
+│ ├── ContactFilterBar.jsx
+│ ├── ContactList.jsx
+│ ├── EngagementTimeline.jsx
+│ ├── GoalTracker.jsx
+│ ├── NextBestAction.jsx
+│ └── RelationshipHealthMeter.jsx
+├── contexts/
+│ └── NetworkAssistantContext.jsx
+├── hooks/
+│ ├── useAIRequest.js
+│ ├── useContactFilter.js
+│ ├── useEngagementHistory.js
+│ ├── useOutreachGoal.js
+│ └── useToneSelector.js
+├── modules/
+│ └── NetworkAssistantDashboard.jsx
+├── utils/
+│ ├── buildNetworkingPrompt.js
+│ ├── mockContacts.js
+│ └── scoringUtils.js
+├── tools/
+│ ├── export_project_structure_chunks.py
+│ ├── export_code_chunks.py
+│ ├── commands_for_splitting.txt
+│ └── output_code_chunks/ (optional)
+│ └── output_structure_chunks/ (optional)
+
+yaml
+Copy
+Edit
+
+---
+
+## ✅ Features Implemented
+
+| Feature | Status |
+|---|---|
+| Multi-Stage Outreach Workflow (Draft → Revise → Finalize → Log) | ✅ |
+| Relationship Health Memory (Cold / Warm / Hot) | ✅ |
+| Emotional Tone Selector | ✅ |
+| Time-Based Triggers (Overdue Highlighting) | ✅ |
+| AI Next Best Action Recommendations | ✅ |
+| Weekly Outreach Goal Tracker | ✅ |
+| Engagement Timeline | ✅ |
+| Campaign (Batch) Outreach Wizard | ✅ |
+| LocalStorage Persistence for Logs, Goals, etc | ✅ |
+| Project and Code Export Scripts (ChatGPT-Friendly Chunk Split) | ✅ |
+| Contact Prioritization Sort (Hot → Warm → Cold → Overdue Cold) | ✅ |
+| AI Prompt Debug Panel | ✅ |
+
+---
+
+## ✅ Tools Included
+
+| Script | Purpose |
+|---|---|
+| export_project_structure_chunks.py | Splits full project folder structure into uploadable .txt chunks |
+| export_code_chunks.py | Splits full project source code into uploadable .txt chunks |
+| commands_for_splitting.txt | Quick run commands for both scripts |
+
+---
+
+## ✅ Usage Notes
+
+- This module is **NOT backend-connected**.
+- **No real LLM calls yet** (mocked prompt building only).
+- **No production styling / UI polish yet**.
+
+✅ Ready to stitch into your full 18-part app when backend and styling phases start.
+
+---
+
+## ✅ Next Steps (Beyond This Delivery)
+
+- Backend wiring (Firestore, APIs, LLMs, etc)
+- App-wide routing
+- Global styles / theming
+- Final integration tests
+- UI polish pass
+
+---
+
+## ✅ Author Notes:
+
+- Phase: **Networking Assistant Frontend Module Completion**  
+- Timeline: **June–July 2025**  
+- Built via ChatGPT + your inputs  
+- With tooling added for ChatGPT file splitting and easy uploads  
+
+---
+
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\AIMessageToneSelector.jsx
+
+code:
+// components/NetworkAssistant/AIMessageToneSelector.jsx
+
+import React from "react";
+import { useNetworkAssistant } from "../../contexts/NetworkAssistantContext";
+
+function AIMessageToneSelector() {
+  const { selectedTone, setSelectedTone } = useNetworkAssistant();
+
+  const handleChange = (e) => {
+    setSelectedTone(e.target.value);
+  };
+
+  return (
+    <div
+      style={{
+        marginTop: "20px",
+        padding: "12px",
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+        backgroundColor: "#fefefe",
+      }}
+    >
+      <h3>Select Message Tone</h3>
+      <select value={selectedTone} onChange={handleChange}>
+        <option value="Neutral">Neutral</option>
+        <option value="Friendly">Friendly</option>
+        <option value="Professional">Professional</option>
+        <option value="Casual">Casual</option>
+        <option value="Empathetic">Empathetic</option>
+      </select>
+      <p style={{ fontSize: "12px", color: "#666", marginTop: "6px" }}>
+        Current Tone: <strong>{selectedTone}</strong>
+      </p>
+    </div>
+  );
+}
+
+export default AIMessageToneSelector;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\AIOutreachWizard.jsx
+
+code:
+// components/NetworkAssistant/AIOutreachWizard.jsx
+
+import React, { useState, useEffect } from "react";
+import { useContacts } from "../../contexts/ContactContext";
+import { useOutreach } from "../../contexts/OutreachContext";
+import { useAIPromptLog } from "../../contexts/AIPromptLogContext";
+import { buildNetworkingPrompt } from "../../utils/buildNetworkingPrompt";
+
+function AIOutreachWizard() {
+  const { selectedContact } = useContacts();
+  const { logOutreach } = useOutreach();
+  const { logAiPrompt } = useAIPromptLog();
+
+  const [step, setStep] = useState(1);
+  const [draftMessage, setDraftMessage] = useState("");
+  const [userEdit, setUserEdit] = useState("");
+  const [refinedMessage, setRefinedMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  if (!selectedContact) {
+    return <p role="alert">Please select a contact to start outreach.</p>;
+  }
+
+  const generateDraft = () => {
+    setLoading(true);
+    const mockDraft = `Hi ${selectedContact.name},\n\nHope you're doing well! Wanted to reach out regarding your role as ${selectedContact.jobTitle}.`;
+
+    setTimeout(() => {
+      setDraftMessage(mockDraft);
+      setStep(2);
+      setLoading(false);
+    }, 800);
+  };
+
+  const refineMessage = () => {
+    const aiPromptText = buildNetworkingPrompt({
+      contact: selectedContact,
+      tone: "Friendly",
+      userDraft: userEdit || draftMessage,
+      relationshipHealth: selectedContact.relationshipHealth,
+    });
+
+    logAiPrompt("AIOutreachWizard", aiPromptText);
+    setRefinedMessage(`${userEdit || draftMessage}\n\n[AI refined version based on tone]`);
+    setStep(4);
+  };
+
+  const finalizeOutreach = () => {
+    logOutreach(selectedContact.id, refinedMessage || userEdit || draftMessage);
+    resetWizard();
+    window.scrollTo(0, 0); // Micro UX: scroll to top after logging
+  };
+
+  const resetWizard = () => {
+    setStep(1);
+    setDraftMessage("");
+    setUserEdit("");
+    setRefinedMessage("");
+  };
+
+  return (
+    <section aria-labelledby="ai-outreach-heading" className="spacing-md">
+      <h3 id="ai-outreach-heading">🤖 AI Outreach Wizard</h3>
+
+      {step === 1 && (
+        <>
+          <p>Step 1: Generate AI Draft</p>
+          <button className="button-primary" onClick={generateDraft} disabled={loading}>
+            {loading ? "Generating..." : "Generate Draft"}
+          </button>
+        </>
+      )}
+
+      {step === 2 && (
+        <>
+          <p>Step 2: Review & Edit Draft</p>
+          <textarea
+            rows={6}
+            style={{ width: "100%" }}
+            value={userEdit || draftMessage}
+            onChange={(e) => setUserEdit(e.target.value)}
+          />
+          <button className="button-secondary" onClick={refineMessage} disabled={loading}>
+            Continue → AI Refine
+          </button>
+        </>
+      )}
+
+      {step === 4 && (
+        <>
+          <p>Step 3: Final Review</p>
+          <textarea
+            rows={6}
+            style={{ width: "100%" }}
+            value={refinedMessage}
+            onChange={(e) => setRefinedMessage(e.target.value)}
+          />
+          <button className="button-primary" onClick={finalizeOutreach}>
+            Finalize & Log Outreach
+          </button>
+        </>
+      )}
+
+      {loading && <div className="loading-spinner" aria-live="polite" />}
+    </section>
+  );
+}
+
+export default React.memo(AIOutreachWizard);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\AIPromptDebugPanel.jsx
+
+code:
+// components/NetworkAssistant/AIPromptDebugPanel.jsx
+
+import React from "react";
+import { useNetworkAssistant } from "../../contexts/NetworkAssistantContext";
+
+function AIPromptDebugPanel() {
+  const { aiPromptLogs } = useNetworkAssistant();
+
+  if (aiPromptLogs.length === 0) return null;
+
+  return (
+    <div
+      style={{
+        marginTop: "20px",
+        padding: "12px",
+        border: "1px solid #ddd",
+        borderRadius: "8px",
+        backgroundColor: "#f0f0f0",
+        maxHeight: "300px",
+        overflowY: "scroll",
+        fontSize: "12px",
+      }}
+    >
+      <h3>🛠️ AI Prompt Debug Panel</h3>
+      {aiPromptLogs.map((entry, idx) => (
+        <div key={idx} style={{ marginBottom: "8px", paddingBottom: "8px", borderBottom: "1px dashed #ccc" }}>
+          <strong>Source:</strong> {entry.source}<br />
+          <pre style={{ whiteSpace: "pre-wrap" }}>{entry.prompt}</pre>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default AIPromptDebugPanel;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\AIPromptSandbox.jsx
+
+code:
+// components/NetworkAssistant/AIPromptSandbox.jsx
+
+import React, { useState } from "react";
+import { buildNetworkingPrompt } from "../../utils/buildNetworkingPrompt";
+
+function AIPromptSandbox() {
+  const [name, setName] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+  const [tone, setTone] = useState("Neutral");
+  const [draft, setDraft] = useState("");
+  const [health, setHealth] = useState("Cold");
+  const [result, setResult] = useState("");
+
+  const generatePrompt = () => {
+    const prompt = buildNetworkingPrompt({
+      contact: { name, jobTitle },
+      tone,
+      userDraft: draft,
+      relationshipHealth: health,
+    });
+    setResult(prompt);
+  };
+
+  return (
+    <section className="spacing-md">
+      <h3>🧪 AI Prompt Sandbox</h3>
+      <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} /><br />
+      <input placeholder="Job Title" value={jobTitle} onChange={(e) => setJobTitle(e.target.value)} /><br />
+      <select value={tone} onChange={(e) => setTone(e.target.value)}>
+        <option>Neutral</option><option>Friendly</option><option>Professional</option><option>Casual</option><option>Empathetic</option>
+      </select><br />
+      <select value={health} onChange={(e) => setHealth(e.target.value)}>
+        <option>Cold</option><option>Warm</option><option>Hot</option>
+      </select><br />
+      <textarea rows={3} placeholder="Optional Draft" value={draft} onChange={(e) => setDraft(e.target.value)} /><br />
+      <button className="button-secondary" onClick={generatePrompt}>Generate Prompt</button>
+
+      {result && (
+        <pre style={{ background: "var(--color-surface)", padding: "8px", marginTop: "8px" }}>{result}</pre>
+      )}
+    </section>
+  );
+}
+
+export default React.memo(AIPromptSandbox);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\Badges.jsx
+
+code:
+// components/NetworkAssistant/Badges.jsx
+
+import React from "react";
+import { useOutreach } from "../../contexts/OutreachContext";
+
+const badgeDescriptions = {
+  "Goal Crusher": "Hit your weekly outreach goal!",
+  "Consistency Champion": "Maintained a 5-day outreach streak!",
+  "Cold Contact Recovery Pro": "Reached out to 3 cold contacts!",
+};
+
+function Badges() {
+  const { badges } = useOutreach();
+
+  if (!badges || badges.length === 0) return null;
+
+  return (
+    <section aria-labelledby="badges-heading" className="spacing-md">
+      <h3 id="badges-heading">🏅 Your Badges</h3>
+      <ul>
+        {badges.map((badge) => (
+          <li key={badge}><strong>{badge}:</strong> {badgeDescriptions[badge] || ""}</li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+export default React.memo(Badges);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\CampaignOutreachWizard.jsx
+
+code:
+// components/NetworkAssistant/CampaignOutreachWizard.jsx
+
+import React, { useState } from "react";
+import { useNetworkAssistant } from "../../contexts/NetworkAssistantContext";
+import { buildNetworkingPrompt } from "../../utils/buildNetworkingPrompt";
+
+function CampaignOutreachWizard() {
+  const { contacts, selectedTone, logOutreach } = useNetworkAssistant();
+  const [selectedContactIds, setSelectedContactIds] = useState([]);
+  const [draftMessage, setDraftMessage] = useState("");
+  const [step, setStep] = useState(1);
+  const [aiPrompt, setAiPrompt] = useState("");
+
+  const toggleContactSelection = (contactId) => {
+    setSelectedContactIds((prev) =>
+      prev.includes(contactId)
+        ? prev.filter((id) => id !== contactId)
+        : [...prev, contactId]
+    );
+  };
+
+  const generateBatchDraft = () => {
+    const selectedContacts = contacts.filter((c) =>
+      selectedContactIds.includes(c.id)
+    );
+
+    const namesList = selectedContacts.map((c) => c.name).join(", ");
+
+    const prompt = buildNetworkingPrompt({
+      contact: { name: namesList, jobTitle: "Multiple Contacts" },
+      tone: selectedTone,
+      userDraft: "",
+      relationshipHealth: "Mixed",
+    });
+
+    console.log("🔍 Campaign AI Prompt:", prompt);
+    setAiPrompt(prompt);
+
+    setDraftMessage(
+      `Hi everyone,\n\nI hope this message finds you well. Just wanted to reconnect and share some updates... [AI-generated content here]`
+    );
+
+    setStep(2);
+  };
+
+  const finalizeAndLogBatch = () => {
+    selectedContactIds.forEach((contactId) => {
+      logOutreach(contactId, draftMessage);
+    });
+    resetWizard();
+  };
+
+  const resetWizard = () => {
+    setSelectedContactIds([]);
+    setDraftMessage("");
+    setAiPrompt("");
+    setStep(1);
+  };
+
+  return (
+    <div
+      style={{
+        marginTop: "20px",
+        padding: "16px",
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+        backgroundColor: "#fefefe",
+      }}
+    >
+      <h3>Campaign Outreach Wizard</h3>
+
+      {step === 1 && (
+        <>
+          <p><strong>Step 1:</strong> Select contacts for the outreach campaign:</p>
+          <ul style={{ listStyleType: "none", paddingLeft: "0" }}>
+            {contacts.map((contact) => (
+              <li key={contact.id} style={{ marginBottom: "6px" }}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={selectedContactIds.includes(contact.id)}
+                    onChange={() => toggleContactSelection(contact.id)}
+                  />{" "}
+                  {contact.name} - {contact.jobTitle}
+                </label>
+              </li>
+            ))}
+          </ul>
+          <button
+            onClick={generateBatchDraft}
+            disabled={selectedContactIds.length === 0}
+          >
+            Generate AI Draft for Campaign
+          </button>
+        </>
+      )}
+
+      {step === 2 && (
+        <>
+          <p><strong>Step 2:</strong> Review and Edit Campaign Message:</p>
+          <textarea
+            rows={8}
+            style={{ width: "100%" }}
+            value={draftMessage}
+            onChange={(e) => setDraftMessage(e.target.value)}
+          />
+          <button onClick={finalizeAndLogBatch} style={{ marginTop: "10px" }}>
+            Finalize & Log Outreach for All Selected Contacts
+          </button>
+
+          {aiPrompt && (
+            <div
+              style={{
+                marginTop: "10px",
+                background: "#f0f0f0",
+                padding: "10px",
+                fontSize: "12px",
+                borderRadius: "6px",
+              }}
+            >
+              <strong>Generated AI Prompt (Debug View):</strong>
+              <pre style={{ whiteSpace: "pre-wrap" }}>{aiPrompt}</pre>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
+export default CampaignOutreachWizard;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\CelebrationOverlay.jsx
+
+code:
+// components/NetworkAssistant/CelebrationOverlay.jsx
+
+import React, { useEffect } from "react";
+
+function CelebrationOverlay({ onComplete }) {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onComplete();
+    }, 3000); // Auto-dismiss after 3 seconds
+    return () => clearTimeout(timer);
+  }, [onComplete]);
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(255,255,255,0.8)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: "2rem",
+        zIndex: 9999,
+      }}
+    >
+      🎉 Congrats! Goal Achieved! 🎉
+    </div>
+  );
+}
+
+export default CelebrationOverlay;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\ColdContactChallenges.jsx
+
+code:
+// components/NetworkAssistant/ColdContactChallenges.jsx
+
+import React from "react";
+import { useNetworkAssistant } from "../../contexts/NetworkAssistantContext";
+
+function ColdContactChallenges() {
+  const { coldOutreachCount } = useNetworkAssistant();
+
+  return (
+    <div style={{ marginTop: "20px", padding: "12px", border: "1px solid #ccc", borderRadius: "8px", backgroundColor: "#fff0f0" }}>
+      <h3>❄️ Cold Contact Recovery Challenge</h3>
+      <p>Goal: Reach out to at least 3 cold contacts.</p>
+      <p>Progress: {coldOutreachCount} / 3 completed.</p>
+      {coldOutreachCount >= 3 && <p style={{ color: "green" }}>✅ Challenge Completed!</p>}
+    </div>
+  );
+}
+
+export default ColdContactChallenges;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\ContactAnalyticsPanel.jsx
+
+code:
+// components/NetworkAssistant/ContactAnalyticsPanel.jsx
+
+import React from "react";
+import { useOutreach } from "../../contexts/OutreachContext";
+import { useContacts } from "../../contexts/ContactContext";
+
+function ContactAnalyticsPanel() {
+  const { outreachLogs } = useOutreach();
+  const { contacts } = useContacts();
+
+  const healthStats = contacts.reduce((acc, contact) => {
+    const count = outreachLogs.filter((log) => log.contactId === contact.id).length;
+    acc[contact.relationshipHealth] = (acc[contact.relationshipHealth] || 0) + count;
+    return acc;
+  }, {});
+
+  return (
+    <section className="spacing-md">
+      <h3>📈 Outreach Analytics</h3>
+      {Object.entries(healthStats).map(([health, count]) => (
+        <p key={health}><strong>{health} Contacts:</strong> {count} outreaches</p>
+      ))}
+      {outreachLogs.length === 0 && <p>No outreach data yet.</p>}
+    </section>
+  );
+}
+
+export default React.memo(ContactAnalyticsPanel);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\ContactCard.jsx
+
+code:
+// components/NetworkAssistant/ContactCard.jsx
+
+import React from "react";
+import { useContacts } from "../../contexts/ContactContext";
+import RelationshipHealthMeter from "./RelationshipHealthMeter";
+
+function ContactCard({ contact }) {
+  const { setSelectedContact } = useContacts();
+
+  const handleSelect = () => setSelectedContact(contact);
+
+  const daysSinceLastContact = contact.lastContacted
+    ? Math.floor((Date.now() - new Date(contact.lastContacted)) / (1000 * 60 * 60 * 24))
+    : Infinity;
+
+  const isOverdue = contact.relationshipHealth === "Cold" && daysSinceLastContact > 30;
+
+  return (
+    <article
+      role="button"
+      tabIndex={0}
+      onClick={handleSelect}
+      onKeyDown={(e) => e.key === "Enter" && handleSelect()}
+      style={{
+        border: isOverdue ? "2px solid var(--color-danger)" : "1px solid #ccc",
+        borderRadius: "8px",
+        padding: "12px",
+        marginBottom: "8px",
+        backgroundColor: "var(--color-surface)",
+        cursor: "pointer",
+      }}
+    >
+      <h4>{contact.name}</h4>
+      <p>{contact.jobTitle}</p>
+      <RelationshipHealthMeter health={contact.relationshipHealth} />
+      {isOverdue && <p className="error-message">⚠️ Overdue: No outreach in 30+ days!</p>}
+    </article>
+  );
+}
+
+export default React.memo(ContactCard);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\ContactDetailView.jsx
+
+code:
+// components/NetworkAssistant/ContactDetailView.jsx
+
+import React from "react";
+import { useContacts } from "../../contexts/ContactContext";
+import { useOutreach } from "../../contexts/OutreachContext";
+
+function ContactDetailView() {
+  const { selectedContact, setSelectedContact } = useContacts();
+  const { outreachLogs } = useOutreach();
+
+  if (!selectedContact) return null;
+
+  const contactLogs = outreachLogs.filter(
+    (log) => log.contactId === selectedContact.id
+  );
+
+  return (
+    <aside role="dialog" aria-labelledby="contact-detail-heading" style={{
+      position: "fixed",
+      right: 0,
+      top: 0,
+      height: "100%",
+      width: "300px",
+      backgroundColor: "var(--color-surface)",
+      borderLeft: "1px solid #ccc",
+      padding: "16px",
+      overflowY: "auto",
+      zIndex: 1000,
+    }}>
+      <h3 id="contact-detail-heading">{selectedContact.name}</h3>
+      <p><strong>Job Title:</strong> {selectedContact.jobTitle}</p>
+      <p><strong>Relationship Health:</strong> {selectedContact.relationshipHealth}</p>
+
+      <h4>Outreach History:</h4>
+      {contactLogs.length === 0 ? (
+        <p>No previous outreaches logged.</p>
+      ) : (
+        <ul>
+          {contactLogs.map((log) => (
+            <li key={log.id}>
+              {new Date(log.date).toLocaleDateString()}: {log.messageContent.slice(0, 50)}...
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <button className="button-secondary" onClick={() => setSelectedContact(null)}>
+        Close
+      </button>
+    </aside>
+  );
+}
+
+export default React.memo(ContactDetailView);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\ContactFilterBar.jsx
+
+code:
+// components/NetworkAssistant/ContactFilterBar.jsx
+
+import React, { useState } from "react";
+import { useNetworkAssistant } from "../../contexts/NetworkAssistantContext";
+import mockContacts from "../../utils/mockContacts";
+
+function ContactFilterBar() {
+  const { setContacts, outreachLogs } = useNetworkAssistant();
+  const [selectedFilter, setSelectedFilter] = useState("All");
+
+  const calculateDaysSince = (dateStr) => {
+    if (!dateStr) return Infinity;
+    const now = new Date();
+    const date = new Date(dateStr);
+    return Math.floor((now - date) / (1000 * 60 * 60 * 24));
+  };
+
+  const handleFilterChange = (filter) => {
+    setSelectedFilter(filter);
+
+    if (filter === "All") {
+      setContacts(mockContacts);
+    } else if (["Cold", "Warm", "Hot"].includes(filter)) {
+      const filtered = mockContacts.filter(
+        (contact) => contact.relationshipHealth === filter
+      );
+      setContacts(filtered);
+    } else if (filter === "Overdue") {
+      const overdueContacts = mockContacts.filter((contact) => {
+        const daysSince = calculateDaysSince(contact.lastContacted);
+        return contact.relationshipHealth === "Cold" && daysSince > 30;
+      });
+      setContacts(overdueContacts);
+    }
+  };
+
+  const filterOptions = ["All", "Cold", "Warm", "Hot", "Overdue"];
+
+  return (
+    <div style={{ marginBottom: "16px" }}>
+      <span>Filter by: </span>
+      {filterOptions.map((filter) => (
+        <button
+          key={filter}
+          onClick={() => handleFilterChange(filter)}
+          style={{
+            margin: "0 4px",
+            padding: "6px 10px",
+            backgroundColor: selectedFilter === filter ? "#007bff" : "#f0f0f0",
+            color: selectedFilter === filter ? "#fff" : "#333",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          {filter}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+export default ContactFilterBar;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\ContactImportPanel.jsx
+
+code:
+// components/NetworkAssistant/ContactImportPanel.jsx
+
+import React, { useState } from "react";
+import { useContacts } from "../../contexts/ContactContext";
+
+function ContactImportPanel() {
+  const { contacts, setContacts } = useContacts();
+  const [inputText, setInputText] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleImport = () => {
+    const lines = inputText.trim().split("\n");
+    const newContacts = lines.map((line, idx) => {
+      const [name, jobTitle] = line.split(",");
+      return {
+        id: (contacts.length + idx + 1).toString(),
+        name: name?.trim() || `Unnamed ${idx + 1}`,
+        jobTitle: jobTitle?.trim() || "Unknown",
+        relationshipHealth: "Cold",
+      };
+    });
+
+    setContacts([...contacts, ...newContacts]);
+    setMessage(`${newContacts.length} contacts imported!`);
+    setInputText("");
+  };
+
+  return (
+    <section className="spacing-md">
+      <h3>📥 Import Contacts</h3>
+      <textarea
+        rows={5}
+        style={{ width: "100%" }}
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
+        placeholder="Name, Job Title\nExample:\nAlice Johnson, Product Manager"
+      />
+      <button className="button-primary" onClick={handleImport}>Import</button>
+      {message && <p style={{ color: "green" }}>{message}</p>}
+    </section>
+  );
+}
+
+export default React.memo(ContactImportPanel);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\ContactList.jsx
+
+code:
+// components/NetworkAssistant/ContactList.jsx
+
+import React, { useMemo } from "react";
+import { useContacts } from "../../contexts/ContactContext";
+import ContactCard from "./ContactCard";
+
+function ContactList() {
+  const { contacts, searchQuery } = useContacts();
+
+  const filteredAndSortedContacts = useMemo(() => {
+    const filtered = contacts.filter((contact) =>
+      [contact.name, contact.jobTitle, ...(contact.topInterests || [])]
+        .join(" ")
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    );
+
+    const healthPriority = { Hot: 0, Warm: 1, Cold: 2 };
+    return filtered.sort((a, b) => {
+      const healthDiff = (healthPriority[a.relationshipHealth] || 3) - (healthPriority[b.relationshipHealth] || 3);
+      return healthDiff !== 0 ? healthDiff : 0;
+    });
+  }, [contacts, searchQuery]);
+
+  if (filteredAndSortedContacts.length === 0) {
+    return (
+      <p role="alert" style={{ fontStyle: "italic", color: "var(--color-muted)" }}>
+        No contacts found. Try changing your filter or search query!
+      </p>
+    );
+  }
+
+  return (
+    <section aria-labelledby="contact-list-heading" className="spacing-md">
+      <h3 id="contact-list-heading">📇 Your Contacts</h3>
+      {filteredAndSortedContacts.map((contact) => (
+        <ContactCard key={contact.id} contact={contact} />
+      ))}
+    </section>
+  );
+}
+
+export default React.memo(ContactList);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\ContactSearchBar.jsx
+
+code:
+// components/NetworkAssistant/ContactSearchBar.jsx
+
+import React, { useState, useEffect } from "react";
+import { useNetworkAssistant } from "../../contexts/NetworkAssistantContext";
+
+function ContactSearchBar() {
+  const { setSearchQuery } = useNetworkAssistant();
+  const [input, setInput] = useState("");
+
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      setSearchQuery(input);
+    }, 300);
+
+    return () => clearTimeout(debounceTimer);
+  }, [input, setSearchQuery]);
+
+  return (
+    <div style={{ marginBottom: "12px" }}>
+      <input
+        type="text"
+        placeholder="Search contacts..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        aria-label="Search contacts"
+        style={{
+          width: "100%",
+          padding: "8px",
+          borderRadius: "4px",
+          border: "1px solid #ccc",
+        }}
+      />
+    </div>
+  );
+}
+
+export default ContactSearchBar;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\DailyTaskFeed.jsx
+
+code:
+// components/NetworkAssistant/DailyTaskFeed.jsx
+
+import React from "react";
+import { useNetworkAssistant } from "../../contexts/NetworkAssistantContext";
+
+function DailyTaskFeed() {
+  const { contacts, outreachLogs } = useNetworkAssistant();
+
+  const todayISO = new Date().toISOString().slice(0, 10);
+
+  const suggestedContacts = contacts.filter((contact) => {
+    const hasContactToday = outreachLogs.some(
+      (log) =>
+        log.contactId === contact.id &&
+        log.date.slice(0, 10) === todayISO
+    );
+    return !hasContactToday && (contact.relationshipHealth !== "Hot" || true);
+  });
+
+  return (
+    <div style={{ marginTop: "20px", padding: "12px", border: "1px solid #ccc", borderRadius: "8px", backgroundColor: "#f9f9f9" }}>
+      <h3>📋 Today's Top Contacts</h3>
+      {suggestedContacts.length === 0 ? (
+        <p>✅ You’ve contacted everyone for today!</p>
+      ) : (
+        <ul>
+          {suggestedContacts.slice(0, 5).map((contact) => (
+            <li key={contact.id}>
+              {contact.name} – {contact.jobTitle} –{" "}
+              <strong style={{ color: contact.relationshipHealth === "Hot" ? "green" : contact.relationshipHealth === "Cold" ? "red" : "orange" }}>
+                {contact.relationshipHealth}
+              </strong>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default DailyTaskFeed;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\EngagementTimeline.jsx
+
+code:
+// components/NetworkAssistant/EngagementTimeline.jsx
+
+import React from "react";
+import { useContacts } from "../../contexts/ContactContext";
+import { useOutreach } from "../../contexts/OutreachContext";
+
+function EngagementTimeline() {
+  const { selectedContact } = useContacts();
+  const { outreachLogs } = useOutreach();
+
+  if (!selectedContact) {
+    return <p>Select a contact to view engagement history.</p>;
+  }
+
+  const contactLogs = outreachLogs
+    .filter((log) => log.contactId === selectedContact.id)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  return (
+    <section aria-labelledby="engagement-timeline-heading" className="spacing-md">
+      <h3 id="engagement-timeline-heading">🕑 Engagement Timeline</h3>
+      {contactLogs.length === 0 ? (
+        <p>No outreach history for this contact.</p>
+      ) : (
+        <ul>
+          {contactLogs.map((log) => (
+            <li key={log.id}>
+              <strong>{new Date(log.date).toLocaleDateString()}:</strong><br />
+              {log.messageContent.slice(0, 100)}...
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}
+
+export default React.memo(EngagementTimeline);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\ErrorBoundary.jsx
+
+code:
+// components/NetworkAssistant/ErrorBoundary.jsx
+
+import React from "react";
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, errorInfo: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, errorInfo: error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("ErrorBoundary caught an error:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: "20px", color: "var(--color-danger)" }}>
+          <h2>Something went wrong 😢</h2>
+          <p>Please refresh or contact support if the issue persists.</p>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
+export default ErrorBoundary;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\GoalTracker.jsx
+
+code:
+// components/NetworkAssistant/GoalTracker.jsx
+
+import React, { useEffect, useState } from "react";
+import { useOutreach } from "../../contexts/OutreachContext";
+import { useUserPreferences } from "../../contexts/UserPreferencesContext";
+import CelebrationOverlay from "./CelebrationOverlay";
+
+function GoalTracker() {
+  const { outreachGoal, completedOutreaches, setOutreachGoal } = useOutreach();
+  const { userNickname } = useUserPreferences();
+
+  const [showCelebration, setShowCelebration] = useState(false);
+
+  const progressPercent = outreachGoal > 0
+    ? Math.min((completedOutreaches / outreachGoal) * 100, 100)
+    : 0;
+
+  useEffect(() => {
+    if (completedOutreaches >= outreachGoal && outreachGoal > 0) {
+      setShowCelebration(true);
+    }
+  }, [completedOutreaches, outreachGoal]);
+
+  return (
+    <section aria-labelledby="goal-tracker-heading" className="spacing-md" role="region">
+      <h3 id="goal-tracker-heading">🎯 {userNickname}'s Weekly Outreach Goal</h3>
+      <p>Goal: {outreachGoal} outreaches</p>
+      <p>Completed: {completedOutreaches} / {outreachGoal}</p>
+
+      <div style={{
+        background: "var(--color-surface)",
+        borderRadius: "8px",
+        height: "12px",
+        width: "100%",
+        marginBottom: "8px",
+      }}>
+        <div style={{
+          background: "var(--color-success)",
+          height: "12px",
+          borderRadius: "8px",
+          width: `${progressPercent}%`,
+          transition: "width 0.3s ease-in-out",
+        }} />
+      </div>
+
+      <label htmlFor="goalInput">Update Goal:</label><br />
+      <input
+        id="goalInput"
+        type="number"
+        value={outreachGoal}
+        onChange={(e) => setOutreachGoal(parseInt(e.target.value, 10) || 0)}
+        style={{ width: "60px", marginTop: "4px" }}
+      />
+
+      {showCelebration && (
+        <CelebrationOverlay onComplete={() => setShowCelebration(false)} />
+      )}
+    </section>
+  );
+}
+
+export default React.memo(GoalTracker);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\HistoryExportPanel.jsx
+
+code:
+// components/NetworkAssistant/HistoryExportPanel.jsx
+
+import React from "react";
+import { useOutreach } from "../../contexts/OutreachContext";
+
+function HistoryExportPanel() {
+  const { outreachLogs } = useOutreach();
+
+  const exportData = (type) => {
+    let data, filename, mime;
+    if (type === "json") {
+      data = JSON.stringify(outreachLogs, null, 2);
+      filename = "outreach_logs.json";
+      mime = "application/json";
+    } else {
+      const header = "ID,ContactID,Message,Date";
+      const rows = outreachLogs.map(log =>
+        `${log.id},"${log.contactId}","${log.messageContent.replace(/"/g, '""')}",${log.date}`
+      );
+      data = [header, ...rows].join("\n");
+      filename = "outreach_logs.csv";
+      mime = "text/csv";
+    }
+
+    const blob = new Blob([data], { type: mime });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  if (outreachLogs.length === 0) return null;
+
+  return (
+    <section className="spacing-md">
+      <h3>📤 Export Outreach History</h3>
+      <button className="button-secondary" onClick={() => exportData("json")}>Export as JSON</button>{" "}
+      <button className="button-secondary" onClick={() => exportData("csv")}>Export as CSV</button>
+    </section>
+  );
+}
+
+export default React.memo(HistoryExportPanel);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\LiveRegion.jsx
+
+code:
+// components/NetworkAssistant/LiveRegion.jsx
+
+import React from "react";
+
+function LiveRegion({ message }) {
+  return (
+    <div aria-live="polite" aria-atomic="true" style={{ position: "absolute", left: "-9999px" }}>
+      {message}
+    </div>
+  );
+}
+
+export default React.memo(LiveRegion);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\NextBestAction.jsx
+
+code:
+// components/NetworkAssistant/NextBestAction.jsx
+
+import React, { useEffect, useState } from "react";
+import { useContacts } from "../../contexts/ContactContext";
+import { useOutreach } from "../../contexts/OutreachContext";
+import { useUserPreferences } from "../../contexts/UserPreferencesContext";
+
+function NextBestAction() {
+  const { selectedContact, contacts } = useContacts();
+  const { outreachLogs, outreachGoal, completedOutreaches } = useOutreach();
+  const { userNickname } = useUserPreferences();
+  const [suggestedAction, setSuggestedAction] = useState("");
+
+  useEffect(() => {
+    if (!selectedContact) {
+      setSuggestedAction("");
+      return;
+    }
+
+    const contactLogs = outreachLogs.filter(
+      (log) => log.contactId === selectedContact.id
+    );
+
+    const daysSinceLast = contactLogs.length
+      ? Math.floor((Date.now() - new Date(contactLogs[0].date)) / (1000 * 60 * 60 * 24))
+      : Infinity;
+
+    let action = "Review contact details and plan outreach.";
+
+    if (selectedContact.relationshipHealth === "Cold" && daysSinceLast > 60) {
+      action = "Send a re-engagement or apology message. It’s been over 60 days.";
+    } else if (selectedContact.relationshipHealth === "Warm") {
+      action = "Send a helpful follow-up with value.";
+    } else if (selectedContact.relationshipHealth === "Hot") {
+      action = "Suggest a meeting or call soon.";
+
+    }
+
+    if (completedOutreaches < outreachGoal) {
+      action += ` (${userNickname}, you still need ${outreachGoal - completedOutreaches} outreaches this week!)`;
+    }
+
+    setSuggestedAction(action);
+  }, [selectedContact, outreachLogs, outreachGoal, completedOutreaches, userNickname]);
+
+  if (!selectedContact) return <p>Select a contact to see next action.</p>;
+
+  return (
+    <section aria-labelledby="nba-heading" className="spacing-md">
+      <h3 id="nba-heading">🧭 Next Best Action</h3>
+      <p>{suggestedAction}</p>
+    </section>
+  );
+}
+
+export default React.memo(NextBestAction);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\OnboardingTour.jsx
+
+code:
+// components/NetworkAssistant/OnboardingTour.jsx
+
+import React, { useState, useEffect } from "react";
+
+const steps = [
+  "👋 Welcome to the Networking Assistant! This tour will guide you through key features.",
+  "📇 First, check out your Contact List. Click a contact to view details.",
+  "🤖 Try generating an AI Outreach Draft using the AI Outreach Wizard.",
+  "🎯 Set your weekly outreach goal in the Goal Tracker.",
+  "🏅 Earn badges as you complete outreach actions!",
+  "✅ Export your outreach history anytime from the History Export Panel.",
+  "🌈 You can also toggle between Light and Dark Mode from Settings.",
+  "🎉 You're all set! Happy networking!",
+];
+
+function OnboardingTour() {
+  const [stepIndex, setStepIndex] = useState(0);
+  const [showTour, setShowTour] = useState(false);
+
+  useEffect(() => {
+    const tourCompleted = localStorage.getItem("networkingAssistant_onboardingComplete");
+    if (!tourCompleted) {
+      setShowTour(true);
+    }
+  }, []);
+
+  const handleNext = () => {
+    if (stepIndex < steps.length - 1) {
+      setStepIndex(stepIndex + 1);
+    } else {
+      setShowTour(false);
+      localStorage.setItem("networkingAssistant_onboardingComplete", "true");
+    }
+  };
+
+  const handleSkip = () => {
+    setShowTour(false);
+    localStorage.setItem("networkingAssistant_onboardingComplete", "true");
+  };
+
+  if (!showTour) return null;
+
+  return (
+    <div style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0,0,0,0.7)",
+      color: "#fff",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+      zIndex: 9999,
+      padding: "20px",
+      textAlign: "center",
+    }}>
+      <h2>Onboarding Tour</h2>
+      <p style={{ maxWidth: "500px" }}>{steps[stepIndex]}</p>
+      <div style={{ marginTop: "12px" }}>
+        <button onClick={handleNext} style={{ marginRight: "8px" }}>
+          {stepIndex < steps.length - 1 ? "Next" : "Finish"}
+        </button>
+        <button onClick={handleSkip}>Skip Tour</button>
+      </div>
+    </div>
+  );
+}
+
+export default OnboardingTour;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\RelationshipHealthMeter.jsx
+
+code:
+// components/NetworkAssistant/RelationshipHealthMeter.jsx
+
+import React from "react";
+
+function RelationshipHealthMeter({ health }) {
+  let color = "#999";
+  let label = "Unknown";
+
+  if (health === "Cold") {
+    color = "#00BFFF"; // Blue
+    label = "Cold";
+  } else if (health === "Warm") {
+    color = "#FFA500"; // Orange
+    label = "Warm";
+  } else if (health === "Hot") {
+    color = "#FF4500"; // Red-Orange
+    label = "Hot";
+  }
+
+  return (
+    <div
+      style={{
+        display: "inline-block",
+        padding: "4px 8px",
+        borderRadius: "12px",
+        backgroundColor: color,
+        color: "#fff",
+        fontSize: "12px",
+      }}
+    >
+      {label}
+    </div>
+  );
+}
+
+export default RelationshipHealthMeter;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\components\NetworkAssistant\UserSettingsPanel.jsx
+
+code:
+// components/NetworkAssistant/UserSettingsPanel.jsx
+
+import React from "react";
+import { useUserPreferences } from "../../contexts/UserPreferencesContext";
+import { useOutreach } from "../../contexts/OutreachContext";
+import { useTheme } from "../../contexts/ThemeContext";
+
+function UserSettingsPanel() {
+  const { userNickname, setUserNickname } = useUserPreferences();
+  const { outreachGoal, setOutreachGoal } = useOutreach();
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <section className="spacing-md">
+      <h3>⚙️ User Settings</h3>
+
+      <div className="spacing-sm">
+        <label>Nickname:</label><br />
+        <input
+          type="text"
+          value={userNickname}
+          onChange={(e) => setUserNickname(e.target.value)}
+        />
+      </div>
+
+      <div className="spacing-sm">
+        <label>Weekly Outreach Goal:</label><br />
+        <input
+          type="number"
+          value={outreachGoal}
+          onChange={(e) => setOutreachGoal(parseInt(e.target.value, 10) || 0)}
+        />
+      </div>
+
+      <button className="button-primary" onClick={toggleTheme}>
+        Toggle Theme (Current: {theme})
+      </button>
+    </section>
+  );
+}
+
+export default React.memo(UserSettingsPanel);
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\contexts\AIPromptLogContext.jsx
+
+code:
+// contexts/AIPromptLogContext.jsx
+
+import React, { createContext, useContext, useState } from "react";
+
+const AIPromptLogContext = createContext();
+
+export function AIPromptLogProvider({ children }) {
+  const [aiPromptLogs, setAiPromptLogs] = useState([]);
+
+  const logAiPrompt = (source, prompt) => {
+    setAiPromptLogs((prev) => [...prev, { source, prompt }]);
+  };
+
+  return (
+    <AIPromptLogContext.Provider value={{ aiPromptLogs, logAiPrompt }}>
+      {children}
+    </AIPromptLogContext.Provider>
+  );
+}
+
+export function useAIPromptLog() {
+  return useContext(AIPromptLogContext);
+}
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\contexts\AppContextProvider.jsx
+
+code:
+// contexts/AppContextProvider.jsx
+
+import React from "react";
+import { ThemeProvider } from "./ThemeContext";
+import { ContactProvider } from "./ContactContext";
+import { OutreachProvider } from "./OutreachContext";
+import { UserPreferencesProvider } from "./UserPreferencesContext";
+import { AIPromptLogProvider } from "./AIPromptLogContext";
+
+export function AppContextProvider({ children }) {
+  return (
+    <ThemeProvider>
+      <UserPreferencesProvider>
+        <ContactProvider>
+          <OutreachProvider>
+            <AIPromptLogProvider>{children}</AIPromptLogProvider>
+          </OutreachProvider>
+        </ContactProvider>
+      </UserPreferencesProvider>
+    </ThemeProvider>
+  );
+}
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\contexts\ContactContext.jsx
+
+code:
+// contexts/ContactContext.jsx
+
+import React, { createContext, useContext, useState, useEffect } from "react";
+import mockContacts from "../utils/mockContacts";
+
+const ContactContext = createContext();
+
+export function ContactProvider({ children }) {
+  const [contacts, setContacts] = useState(mockContacts);
+  const [selectedContact, setSelectedContact] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  return (
+    <ContactContext.Provider
+      value={{
+        contacts,
+        setContacts,
+        selectedContact,
+        setSelectedContact,
+        searchQuery,
+        setSearchQuery,
+      }}
+    >
+      {children}
+    </ContactContext.Provider>
+  );
+}
+
+export function useContacts() {
+  return useContext(ContactContext);
+}
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\contexts\NetworkAssistantContext.jsx
+
+code:
+// contexts/NetworkAssistantContext.jsx
+
+import React, { createContext, useContext, useState, useEffect } from "react";
+import mockContacts from "../utils/mockContacts";
+import { calculateRelationshipHealth } from "../utils/scoringUtils";
+
+const NetworkAssistantContext = createContext();
+
+export function NetworkAssistantProvider({ children }) {
+  const [contacts, setContacts] = useState(mockContacts);
+  const [selectedContact, setSelectedContact] = useState(null);
+
+  const [outreachLogs, setOutreachLogs] = useState(() => {
+    const savedLogs = localStorage.getItem("networkingAssistant_outreachLogs");
+    return savedLogs ? JSON.parse(savedLogs) : [];
+  });
+
+  const [outreachGoal, setOutreachGoal] = useState(() => {
+    const saved = localStorage.getItem("networkingAssistant_outreachGoal");
+    return saved ? parseInt(saved, 10) : 5;
+  });
+
+  const [completedOutreaches, setCompletedOutreaches] = useState(() => {
+    const saved = localStorage.getItem("networkingAssistant_completedOutreaches");
+    return saved ? parseInt(saved, 10) : 0;
+  });
+
+  const [selectedTone, setSelectedTone] = useState("Neutral");
+
+  const [lastActivityTime, setLastActivityTime] = useState(Date.now());
+  const [outreachStreak, setOutreachStreak] = useState(() => {
+    const saved = localStorage.getItem("networkingAssistant_outreachStreak");
+    return saved ? parseInt(saved, 10) : 0;
+  });
+
+  const [badges, setBadges] = useState(() => {
+    const saved = localStorage.getItem("networkingAssistant_badges");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [aiPromptLogs, setAiPromptLogs] = useState([]);
+
+  // ✅ New: Theme and User Nickname State
+  const [theme, setTheme] = useState(() => localStorage.getItem("networkingAssistant_theme") || "light");
+  const [userNickname, setUserNickname] = useState(() => localStorage.getItem("networkingAssistant_nickname") || "User");
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
+  useEffect(() => {
+    localStorage.setItem("networkingAssistant_theme", theme);
+  }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem("networkingAssistant_nickname", userNickname);
+  }, [userNickname]);
+
+  const logAiPrompt = (source, prompt) => {
+    setAiPromptLogs((prev) => [...prev, { source, prompt }]);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("networkingAssistant_badges", JSON.stringify(badges));
+  }, [badges]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "networkingAssistant_outreachLogs",
+      JSON.stringify(outreachLogs)
+    );
+  }, [outreachLogs]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "networkingAssistant_outreachGoal",
+      outreachGoal.toString()
+    );
+  }, [outreachGoal]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "networkingAssistant_completedOutreaches",
+      completedOutreaches.toString()
+    );
+  }, [completedOutreaches]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "networkingAssistant_outreachStreak",
+      outreachStreak.toString()
+    );
+  }, [outreachStreak]);
+
+  const updateContactHealth = (contactId) => {
+    setContacts((prevContacts) =>
+      prevContacts.map((contact) => {
+        if (contact.id !== contactId) return contact;
+
+        const contactLogs = outreachLogs.filter(
+          (log) => log.contactId === contactId
+        );
+
+        const lastLog = contactLogs.sort(
+          (a, b) => new Date(b.date) - new Date(a.date)
+        )[0];
+
+        const newHealth = calculateRelationshipHealth(lastLog?.date);
+        return { ...contact, relationshipHealth: newHealth };
+      })
+    );
+  };
+
+  const recalculateAllContactHealth = () => {
+    setContacts((prevContacts) =>
+      prevContacts.map((contact) => {
+        const contactLogs = outreachLogs.filter(
+          (log) => log.contactId === contact.id
+        );
+
+        const lastLog = contactLogs.sort(
+          (a, b) => new Date(b.date) - new Date(a.date)
+        )[0];
+
+        const newHealth = calculateRelationshipHealth(lastLog?.date);
+        return { ...contact, relationshipHealth: newHealth };
+      })
+    );
+  };
+
+  useEffect(() => {
+    recalculateAllContactHealth();
+  }, []);
+
+  const registerActivity = () => {
+    setLastActivityTime(Date.now());
+  };
+
+  const unlockBadge = (badgeName) => {
+    if (!badges.includes(badgeName)) {
+      setBadges((prev) => [...prev, badgeName]);
+    }
+  };
+
+  const coldOutreachCount = outreachLogs.filter((log) => {
+    const contact = contacts.find((c) => c.id === log.contactId);
+    return contact?.relationshipHealth === "Cold";
+  }).length;
+
+  const logOutreach = (contactId, messageContent) => {
+    const newLog = {
+      id: Date.now().toString(),
+      contactId,
+      messageContent,
+      date: new Date().toISOString(),
+    };
+
+    setOutreachLogs((prev) => [...prev, newLog]);
+    setCompletedOutreaches((count) => count + 1);
+    updateContactHealth(contactId);
+
+    const now = new Date();
+    const lastDate = new Date(lastActivityTime);
+    const daysGap = Math.floor((now - lastDate) / (1000 * 60 * 60 * 24));
+
+    if (daysGap <= 1) {
+      setOutreachStreak((prev) => prev + 1);
+    } else {
+      setOutreachStreak(1);
+    }
+
+    setLastActivityTime(now.getTime());
+
+    if (completedOutreaches + 1 === outreachGoal) {
+      unlockBadge("Goal Crusher");
+    }
+
+    if (outreachStreak >= 5) {
+      unlockBadge("Consistency Champion");
+    }
+
+    if (coldOutreachCount >= 3) {
+      unlockBadge("Cold Contact Recovery Pro");
+    }
+
+    setContacts((prevContacts) =>
+      prevContacts.map((contact) => {
+        if (contact.id !== contactId) return contact;
+
+        const newMemory = contact.lastConversationSnippet
+          ? `${contact.lastConversationSnippet} | ${messageContent.slice(0, 50)}...`
+          : messageContent.slice(0, 50) + "...";
+
+        return {
+          ...contact,
+          lastConversationSnippet: newMemory,
+        };
+      })
+    );
+  };
+
+  const resetAllData = () => {
+    localStorage.removeItem("networkingAssistant_outreachLogs");
+    localStorage.removeItem("networkingAssistant_outreachGoal");
+    localStorage.removeItem("networkingAssistant_completedOutreaches");
+    localStorage.removeItem("networkingAssistant_outreachStreak");
+    localStorage.removeItem("networkingAssistant_badges");
+    localStorage.removeItem("networkingAssistant_theme");
+    localStorage.removeItem("networkingAssistant_nickname");
+
+    setOutreachLogs([]);
+    setOutreachGoal(5);
+    setCompletedOutreaches(0);
+    setOutreachStreak(0);
+    setBadges([]);
+    setContacts(mockContacts);
+    setSelectedContact(null);
+    setSearchQuery("");
+    setAiPromptLogs([]);
+    setTheme("light");
+    setUserNickname("User");
+  };
+
+  const value = {
+    contacts,
+    setContacts,
+    selectedContact,
+    setSelectedContact,
+    outreachLogs,
+    logOutreach,
+    outreachGoal,
+    setOutreachGoal,
+    completedOutreaches,
+    selectedTone,
+    setSelectedTone,
+    resetAllData,
+    registerActivity,
+    lastActivityTime,
+    outreachStreak,
+    badges,
+    unlockBadge,
+    coldOutreachCount,
+    searchQuery,
+    setSearchQuery,
+    aiPromptLogs,
+    logAiPrompt,
+    theme,
+    toggleTheme,
+    userNickname,
+    setUserNickname,
+  };
+
+  return (
+    <NetworkAssistantContext.Provider value={value}>
+      {children}
+    </NetworkAssistantContext.Provider>
+  );
+}
+
+export function useNetworkAssistant() {
+  return useContext(NetworkAssistantContext);
+}
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\contexts\OutreachContext.jsx
+
+code:
+// contexts/OutreachContext.jsx
+
+import React, { createContext, useContext, useState, useEffect } from "react";
+
+const OutreachContext = createContext();
+
+export function OutreachProvider({ children }) {
+  const [outreachLogs, setOutreachLogs] = useState(() => {
+    const saved = localStorage.getItem("outreachLogs");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const [outreachGoal, setOutreachGoal] = useState(() => {
+    const saved = localStorage.getItem("outreachGoal");
+    return saved ? parseInt(saved, 10) : 5;
+  });
+
+  const [completedOutreaches, setCompletedOutreaches] = useState(() => {
+    const saved = localStorage.getItem("completedOutreaches");
+    return saved ? parseInt(saved, 10) : 0;
+  });
+
+  const logOutreach = (contactId, messageContent) => {
+    const newLog = {
+      id: Date.now().toString(),
+      contactId,
+      messageContent,
+      date: new Date().toISOString(),
+    };
+
+    setOutreachLogs((prev) => [...prev, newLog]);
+    setCompletedOutreaches((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("outreachLogs", JSON.stringify(outreachLogs));
+    localStorage.setItem("completedOutreaches", completedOutreaches.toString());
+    localStorage.setItem("outreachGoal", outreachGoal.toString());
+  }, [outreachLogs, completedOutreaches, outreachGoal]);
+
+  return (
+    <OutreachContext.Provider
+      value={{
+        outreachLogs,
+        logOutreach,
+        outreachGoal,
+        setOutreachGoal,
+        completedOutreaches,
+      }}
+    >
+      {children}
+    </OutreachContext.Provider>
+  );
+}
+
+export function useOutreach() {
+  return useContext(OutreachContext);
+}
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\contexts\ThemeContext.jsx
+
+code:
+// contexts/ThemeContext.jsx
+
+import React, { createContext, useContext, useState, useEffect } from "react";
+
+const ThemeContext = createContext();
+
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((prev) => (prev === "light" ? "dark" : "light"));
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+export function useTheme() {
+  return useContext(ThemeContext);
+}
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\contexts\UserPreferencesContext.jsx
+
+code:
+// contexts/UserPreferencesContext.jsx
+
+import React, { createContext, useContext, useState, useEffect } from "react";
+
+const UserPreferencesContext = createContext();
+
+export function UserPreferencesProvider({ children }) {
+  const [userNickname, setUserNickname] = useState(() => localStorage.getItem("nickname") || "User");
+
+  useEffect(() => {
+    localStorage.setItem("nickname", userNickname);
+  }, [userNickname]);
+
+  return (
+    <UserPreferencesContext.Provider value={{ userNickname, setUserNickname }}>
+      {children}
+    </UserPreferencesContext.Provider>
+  );
+}
+
+export function useUserPreferences() {
+  return useContext(UserPreferencesContext);
+}
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\hooks\useAIRequest.js
+
+code:
+export const useAIRequest = () => {
+  // Placeholder hook - implement AI API call logic here later
+  return null;
+};
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\hooks\useContactFilter.js
+
+code:
+export const useContactFilter = () => {
+  // Placeholder hook - implement contact filtering logic here later
+  return null;
+};
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\hooks\useEngagementHistory.js
+
+code:
+export const useEngagementHistory = () => {
+  // Placeholder hook - implement engagement timeline retrieval logic here later
+  return null;
+};
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\hooks\useOutreachGoal.js
+
+code:
+export const useOutreachGoal = () => {
+  // Placeholder hook - implement outreach goal tracking logic here later
+  return null;
+};
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\hooks\useToneSelector.js
+
+code:
+export const useToneSelector = () => {
+  // Placeholder hook - implement tone selection logic here later
+  return null;
+};
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\modules\NetworkAssistantDashboard.jsx
+
+code:
+// modules/NetworkAssistantDashboard.jsx
+
+import React from "react";
+import { AppContextProvider } from "../contexts/AppContextProvider";  // ✅ Global context
+import ErrorBoundary from "../components/NetworkAssistant/ErrorBoundary";  // ✅ Error boundary import
+
+import ContactFilterBar from "../components/NetworkAssistant/ContactFilterBar";
+import ContactList from "../components/NetworkAssistant/ContactList";
+import NextBestAction from "../components/NetworkAssistant/NextBestAction";
+import AIOutreachWizard from "../components/NetworkAssistant/AIOutreachWizard";
+import GoalTracker from "../components/NetworkAssistant/GoalTracker";
+import EngagementTimeline from "../components/NetworkAssistant/EngagementTimeline";
+import AIMessageToneSelector from "../components/NetworkAssistant/AIMessageToneSelector";
+
+import Badges from "../components/NetworkAssistant/Badges";
+import ColdContactChallenges from "../components/NetworkAssistant/ColdContactChallenges";
+import DailyTaskFeed from "../components/NetworkAssistant/DailyTaskFeed";
+
+import ContactSearchBar from "../components/NetworkAssistant/ContactSearchBar";
+import ContactDetailView from "../components/NetworkAssistant/ContactDetailView";
+import AIPromptDebugPanel from "../components/NetworkAssistant/AIPromptDebugPanel";
+import HistoryExportPanel from "../components/NetworkAssistant/HistoryExportPanel";
+import UserSettingsPanel from "../components/NetworkAssistant/UserSettingsPanel";
+import ContactImportPanel from "../components/NetworkAssistant/ContactImportPanel";
+import AIPromptSandbox from "../components/NetworkAssistant/AIPromptSandbox";
+import OnboardingTour from "../components/NetworkAssistant/OnboardingTour";
+import ContactAnalyticsPanel from "../components/NetworkAssistant/ContactAnalyticsPanel";
+
+function NetworkAssistantDashboard() {
+  return (
+    <AppContextProvider>
+      <ErrorBoundary>
+        <div className="container">
+          <h1>Networking Assistant Dashboard</h1>
+
+          <div className="fade-in"><ContactSearchBar /></div>
+          <div className="fade-in"><ContactFilterBar /></div>
+          <div className="fade-in"><ContactList /></div>
+          <div className="fade-in"><ContactDetailView /></div>
+          <div className="fade-in"><NextBestAction /></div>
+          <div className="fade-in"><AIMessageToneSelector /></div>
+          <div className="fade-in"><AIOutreachWizard /></div>
+          <div className="fade-in"><GoalTracker /></div>
+          <div className="fade-in"><EngagementTimeline /></div>
+          <div className="fade-in"><DailyTaskFeed /></div>
+          <div className="fade-in"><Badges /></div>
+          <div className="fade-in"><ColdContactChallenges /></div>
+          <div className="fade-in"><AIPromptDebugPanel /></div>
+          <div className="fade-in"><HistoryExportPanel /></div>
+          <div className="fade-in"><UserSettingsPanel /></div>
+          <div className="fade-in"><ContactImportPanel /></div>
+          <div className="fade-in"><AIPromptSandbox /></div>
+          <div className="fade-in"><OnboardingTour /></div>
+          <div className="fade-in"><ContactAnalyticsPanel /></div>
+        </div>
+      </ErrorBoundary>
+    </AppContextProvider>
+  );
+}
+
+export default NetworkAssistantDashboard;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\tools\export_code_chunks.py
+
+code:
+import os
+
+OUTPUT_DIR = "output_code_chunks"
+LINES_PER_FILE = 5000
+TEXT_FILE_EXTENSIONS = [".js", ".jsx", ".json", ".md", ".html", ".css", ".py"]
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+def collect_project_files(base_dir):
+    collected = []
+    for root, _, files in os.walk(base_dir):
+        for file in files:
+            if any(file.endswith(ext) for ext in TEXT_FILE_EXTENSIONS):
+                full_path = os.path.join(root, file)
+                collected.append(full_path)
+    return collected
+
+def save_chunks(all_file_contents):
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    chunk = []
+    chunk_num = 1
+    line_count = 0
+
+    for file_path, content in all_file_contents:
+        entry = f"file name: {file_path}\n\ncode:\n{content}\n\n---\n\n"
+        lines = entry.splitlines()
+        if line_count + len(lines) > LINES_PER_FILE:
+            output_path = os.path.join(OUTPUT_DIR, f"code_chunk_{chunk_num}.txt")
+            with open(output_path, "w", encoding="utf-8") as f:
+                f.write("\n".join(chunk))
+            chunk = []
+            line_count = 0
+            chunk_num += 1
+        chunk.extend(lines)
+        line_count += len(lines)
+
+    if chunk:
+        output_path = os.path.join(OUTPUT_DIR, f"code_chunk_{chunk_num}.txt")
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write("\n".join(chunk))
+
+if __name__ == "__main__":
+    print(f"Exporting project code from: {PROJECT_ROOT}")
+    files = collect_project_files(PROJECT_ROOT)
+    all_contents = []
+    for path in files:
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                content = f.read()
+                all_contents.append((path, content))
+        except Exception as e:
+            print(f"⚠️ Skipping {path}: {e}")
+    save_chunks(all_contents)
+    print(f"✅ Done! Output saved in ./{OUTPUT_DIR}/")
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\tools\export_project_structure_chunks.py
+
+code:
+import os
+
+OUTPUT_DIR = "output_structure_chunks"
+LINES_PER_FILE = 5000
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+def walk_directory(root_dir):
+    file_tree = []
+    for root, dirs, files in os.walk(root_dir):
+        level = root.replace(root_dir, '').count(os.sep)
+        indent = '  ' * level
+        file_tree.append(f"{indent}{os.path.basename(root)}/")
+        for f in files:
+            file_tree.append(f"{indent}  {f}")
+    return file_tree
+
+def save_chunks(lines, base_filename):
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    for i in range(0, len(lines), LINES_PER_FILE):
+        chunk = lines[i:i + LINES_PER_FILE]
+        part_num = i // LINES_PER_FILE + 1
+        with open(os.path.join(OUTPUT_DIR, f"{base_filename}_part{part_num}.txt"), "w", encoding="utf-8") as f:
+            f.write("\n".join(chunk))
+
+if __name__ == "__main__":
+    print(f"Exporting project folder structure from: {PROJECT_ROOT}")
+    lines = walk_directory(PROJECT_ROOT)
+    save_chunks(lines, "project_structure")
+    print(f"✅ Done! Output saved in ./{OUTPUT_DIR}/")
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\utils\aiPromptLogger.js
+
+code:
+// utils/aiPromptLogger.js
+
+export const logAiPrompt = (source, prompt, contextSetter) => {
+  contextSetter((prev) => [...prev, { source, prompt }]);
+};
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\utils\buildNetworkingPrompt.js
+
+code:
+// utils/buildNetworkingPrompt.js
+
+export function buildNetworkingPrompt({ contact, tone, userDraft, relationshipHealth }) {
+  let basePrompt = `Compose a ${tone} LinkedIn outreach message to ${contact.name}, who is currently a ${contact.jobTitle}.`;
+
+  if (relationshipHealth === "Cold") {
+    basePrompt += " The message should re-establish the relationship and reference that it's been a while since last contact.";
+  } else if (relationshipHealth === "Warm") {
+    basePrompt += " The message should build on recent interactions and provide value.";
+  } else if (relationshipHealth === "Hot") {
+    basePrompt += " The message should encourage immediate engagement or propose a meeting.";
+  }
+
+  if (userDraft) {
+    basePrompt += `\n\nHere is the user's draft to improve and rewrite:\n"${userDraft}"`;
+  }
+
+  basePrompt += "\n\nKeep the tone consistent and avoid being overly formal.";
+
+  return basePrompt;
+}
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\utils\localNLP.js
+
+code:
+// utils/localNLP.js
+
+export function simpleSentimentAnalysis(text) {
+  const lowerText = text.toLowerCase();
+
+  const positiveWords = ["great", "thank", "happy", "good", "excited", "awesome"];
+  const negativeWords = ["sorry", "unfortunately", "problem", "issue", "bad"];
+
+  let score = 0;
+
+  positiveWords.forEach((word) => {
+    if (lowerText.includes(word)) score += 1;
+  });
+
+  negativeWords.forEach((word) => {
+    if (lowerText.includes(word)) score -= 1;
+  });
+
+  if (score > 0) return "Positive";
+  if (score < 0) return "Negative";
+  return "Neutral";
+}
+
+export function extractTopicTags(text) {
+  const tags = [];
+
+  const topicKeywords = {
+    jobSearch: ["resume", "interview", "application", "career"],
+    networking: ["connect", "network", "coffee", "chat"],
+    updates: ["update", "news", "announcement", "project"],
+  };
+
+  const lowerText = text.toLowerCase();
+
+  Object.entries(topicKeywords).forEach(([tag, keywords]) => {
+    keywords.forEach((word) => {
+      if (lowerText.includes(word) && !tags.includes(tag)) {
+        tags.push(tag);
+      }
+    });
+  });
+
+  return tags.length > 0 ? tags : ["general"];
+}
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\utils\mockContacts.js
+
+code:
+// utils/mockContacts.js
+
+const mockContacts = [
+  {
+    id: "1",
+    name: "Alice Johnson",
+    jobTitle: "Product Manager at TechCorp",
+    lastContacted: "2025-06-20",
+    engagementScore: 75, // 0-100 scale
+    relationshipHealth: "Warm", // Cold / Warm / Hot
+    topInterests: ["Product Strategy", "Agile Teams"],
+    recentTopics: ["Q2 Product Launch"],
+    lastConversationSnippet: "We discussed agile roadmapping and upcoming product features.",
+  },
+  {
+    id: "2",
+    name: "Brian Lee",
+    jobTitle: "Marketing Director at Marketify",
+    lastContacted: "2025-05-15",
+    engagementScore: 30,
+    relationshipHealth: "Cold",
+    topInterests: ["Brand Awareness", "Content Strategy"],
+    recentTopics: ["Social Media Metrics", "Q1 Campaign Results"],
+    lastConversationSnippet: "Talked about improving engagement on LinkedIn ads.",
+  },
+  {
+    id: "3",
+    name: "Carla Smith",
+    jobTitle: "Software Engineer at DevWorks",
+    lastContacted: "2025-06-25",
+    engagementScore: 90,
+    relationshipHealth: "Hot",
+    topInterests: ["AI Development", "Open Source"],
+    recentTopics: ["New ML Deployment Pipeline"],
+    lastConversationSnippet: "Discussed challenges in deploying machine learning models to production.",
+  },
+];
+
+export default mockContacts;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\utils\scoringUtils.js
+
+code:
+// utils/scoringUtils.js
+
+export function calculateRelationshipHealth(lastContactDate) {
+  if (!lastContactDate) return "Cold";
+
+  const now = new Date();
+  const lastDate = new Date(lastContactDate);
+  const daysSinceContact = Math.floor(
+    (now - lastDate) / (1000 * 60 * 60 * 24)
+  );
+
+  if (daysSinceContact <= 7) {
+    return "Hot";
+  } else if (daysSinceContact <= 30) {
+    return "Warm";
+  } else {
+    return "Cold";
+  }
+}
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\utils\suggestionSnippets.js
+
+code:
+// utils/suggestionSnippets.js
+
+const suggestionSnippets = {
+  greetings: ["Hi there,", "Hello,", "Good morning,", "Hey,"],
+  ctas: ["Let me know your thoughts.", "Looking forward to connecting.", "Hope to hear back soon.", "Let’s chat soon."],
+  signOffs: ["Best regards,", "Cheers,", "Talk soon,", "Sincerely,"],
+};
+
+export default suggestionSnippets;
+
+
+---
+
+file name: C:\Users\kashi\Desktop\Student Lifecycle - Networking Assistant\utils\uiCopyVariants.js
+
+code:
+// utils/uiCopyVariants.js
+
+const uiCopyVariants = {
+  motivational: [
+    "You're making great progress!",
+    "Keep reaching out and building connections!",
+    "You're on fire today!"
+  ],
+  supportive: [
+    "Even one small outreach makes a big difference.",
+    "You're doing great, stay consistent!",
+    "Small steps build big networks."
+  ],
+  humorous: [
+    "Looks lonely here... Let’s fix that!",
+    "Your network is waiting… probably checking their inboxes!",
+    "Outreach isn't going to send itself!"
+  ],
+  inactivityNudges: [
+    "Haven’t reached out in a while? Let’s change that!",
+    "Your contacts miss you. Probably.",
+    "Rekindle your networking magic!"
+  ]
+};
+
+export default uiCopyVariants;
+
+
+---

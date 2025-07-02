@@ -1,0 +1,133 @@
+/* index.css – Global Styles, Color Variables, and Spacing Scale */
+
+/* === Color Variables (Light Theme Default) === */
+:root {
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-background: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-text: #212529;
+  --color-muted: #6c757d;
+}
+
+/* === Dark Theme Overrides === */
+[data-theme="dark"] {
+  --color-background: #121212;
+  --color-surface: #1e1e1e;
+  --color-text: #f5f5f5;
+  --color-muted: #aaaaaa;
+  --color-primary: #4dabf7;
+  --color-secondary: #868e96;
+  --color-success: #51cf66;
+  --color-danger: #ff6b6b;
+}
+
+/* === Typography Scale === */
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Spacing Scale === */
+.spacing-xs { margin: 4px; }
+.spacing-sm { margin: 8px; }
+.spacing-md { margin: 16px; }
+.spacing-lg { margin: 24px; }
+.spacing-xl { margin: 32px; }
+
+/* === Button Styles === */
+.button-primary {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.button-secondary {
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.button-danger {
+  background-color: var(--color-danger);
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  opacity: 0.9;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* === Error States === */
+.error-message {
+  color: var(--color-danger);
+  font-weight: bold;
+}
+
+/* === Loading States === */
+.loading-spinner {
+  border: 4px solid var(--color-surface);
+  border-top: 4px solid var(--color-primary);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  margin: 8px auto;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* === Smooth Section Fade-ins === */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ✅ Global Container Layout */
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ✅ ARIA Live Region (for screen reader announcements) */
+[aria-live] {
+  position: absolute;
+  left: -9999px;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}

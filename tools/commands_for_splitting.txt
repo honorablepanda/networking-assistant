@@ -1,0 +1,13 @@
+# Commands for splitting project structure and code into uploadable chunks
+
+# 1. Export full project folder structure (starting from project root)
+python export_project_structure_chunks.py
+
+# 2. Export full project code into ChatGPT-friendly chunks
+python export_code_chunks.py
+
+# Both scripts now automatically target the full project root regardless of where you run them from.
+
+# Output folders:
+# - output_structure_chunks/
+# - output_code_chunks/
